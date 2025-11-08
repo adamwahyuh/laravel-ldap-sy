@@ -8,7 +8,7 @@ use LdapRecord\Models\Relations\HasMany;
 
 class Department extends Model
 {
-    public $objectClasses = [
+    public static array $objectClasses = [
         'top',
         'organizationalUnit',
     ];

@@ -6,18 +6,28 @@ use App\Ldap\Group;
 use LdapRecord\Models\Model;
 use LdapRecord\Models\Relations\HasMany;
 
-class Person extends Model{
-
-    public $objectClasses = [
+class Person extends Model
+{
+    public static array $objectClasses = [
         'top',
         'person',
         'organizationalPerson',
         'inetOrgPerson',
     ];
 
+
+    protected $selects = [
+        'uid', 
+        'displayName', 
+        'mail', 
+        'departmentNumber', 
+        'telephoneNumber',
+        'title', 
+    ];
+
     protected $baseDn = 'ou=People,dc=adam,dc=local';
 
-    //aksesor
+    // aksesor
 
     public function getUidAttribute()
     {
@@ -49,10 +59,12 @@ class Person extends Model{
         return $this->telephoneNumber[0] ?? null;
     }
 
-    // Relasi 
-
-    public function groups() : HasMany
+    // relasi
+    public function getGroupsAttribute()
     {
-        return $this->hasMany(Group::class, 'member', 'dn');
+        // Ambil semua Group yang memiliki 'member' = DN pengguna ini
+        return Group::where('member', $this->getDn())->get();
     }
+
+
 }
