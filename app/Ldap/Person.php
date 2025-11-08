@@ -44,7 +44,7 @@ class Person extends Model
         return $this->mail[0] ?? null;
     }
 
-    public function getTitleAttribute()
+    public function getZitleAttribute()
     {
         return $this->title[0] ?? null;
     }

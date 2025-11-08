@@ -27,7 +27,7 @@
                     <td>{{ $person->uid }}</td>
                     <td>{{ $person->full_name }}</td>
                     <td>{{ $person->email }}</td>
-                    <td style="color: black">{{ $person->title }}</td>
+                    <td style="color: black">{{ $person->zitle }}</td>
                     <td>{{ $person->department }}</td>
                     <td>{{ $person->phone }}</td>
                     <td>
