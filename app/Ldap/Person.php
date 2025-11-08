@@ -29,7 +29,7 @@ class Person extends Model
 
     // aksesor
 
-    public function getUidAttribute()
+    public function getUiidAttribute()
     {
         return $this->uid[0] ?? null;
     }

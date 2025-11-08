@@ -24,7 +24,7 @@
         <tbody>
             @forelse ($people as $person)
                 <tr>
-                    <td>{{ $person->uid }}</td>
+                    <td>{{ $person->uiid }}</td>
                     <td>{{ $person->full_name }}</td>
                     <td>{{ $person->email }}</td>
                     <td style="color: black">{{ $person->zitle }}</td>
