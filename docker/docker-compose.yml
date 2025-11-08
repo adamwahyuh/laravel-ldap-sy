@@ -1,0 +1,28 @@
+services:
+  openldap:
+    image: osixia/openldap:1.5.0
+    container_name: openldap
+    environment:
+      LDAP_ORGANISATION: "Adam Corp"
+      LDAP_DOMAIN: "adam.local"
+      LDAP_ADMIN_PASSWORD: "admon"
+    ports:
+      - "389:389"       # LDAP
+      - "636:636"       # LDAPS
+    volumes:
+      - ./ldap/data:/var/lib/ldap
+      - ./ldap/config:/etc/ldap/slapd.d
+    restart: unless-stopped
+
+  phpldapadmin:
+    image: osixia/phpldapadmin:0.9.0
+    container_name: phpldapadmin
+    environment:
+      PHPLDAPADMIN_LDAP_HOSTS: openldap
+      PHPLDAPADMIN_HTTPS: "false"
+    ports:
+      - "8080:80"   # akses lewat http://localhost:8080
+    depends_on:
+      - openldap
+    restart: unless-stopped
+
