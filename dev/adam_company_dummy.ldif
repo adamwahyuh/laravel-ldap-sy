@@ -1,0 +1,253 @@
+# LDIF for dummy company "Adam Corp" (dc=adam,dc=local)
+# Import with: ldapadd -x -D "cn=admin,dc=adam,dc=local" -w admon -f adam_company.ldif
+
+# Top-level domain
+dn: dc=adam,dc=local
+objectClass: top
+objectClass: dcObject
+objectClass: organization
+o: Adam Corp
+dc: adam
+
+# Organizational Units
+dn: ou=People,dc=adam,dc=local
+objectClass: top
+objectClass: organizationalUnit
+ou: People
+
+dn: ou=Groups,dc=adam,dc=local
+objectClass: top
+objectClass: organizationalUnit
+ou: Groups
+
+dn: ou=Departments,dc=adam,dc=local
+objectClass: top
+objectClass: organizationalUnit
+ou: Departments
+
+# Departments (as entries so you can browse/filter by department)
+dn: ou=Executive,ou=Departments,dc=adam,dc=local
+objectClass: top
+objectClass: organizationalUnit
+ou: Executive
+
+dn: ou=Engineering,ou=Departments,dc=adam,dc=local
+objectClass: top
+objectClass: organizationalUnit
+ou: Engineering
+
+dn: ou=HR,ou=Departments,dc=adam,dc=local
+objectClass: top
+objectClass: organizationalUnit
+ou: HR
+
+dn: ou=Sales,ou=Departments,dc=adam,dc=local
+objectClass: top
+objectClass: organizationalUnit
+ou: Sales
+
+# People (10 sample users)
+
+dn: uid=alice.smith,ou=People,dc=adam,dc=local
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+uid: alice.smith
+cn: Alice Smith
+sn: Smith
+givenName: Alice
+displayName: Alice Smith
+mail: alice.smith@adam.local
+title: Chief Executive Officer
+employeeNumber: 1001
+telephoneNumber: +62 21 555 0101
+departmentNumber: Executive
+userPassword: ceoPass123
+
+dn: uid=bob.johnson,ou=People,dc=adam,dc=local
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+uid: bob.johnson
+cn: Bob Johnson
+sn: Johnson
+givenName: Bob
+displayName: Bob Johnson
+mail: bob.johnson@adam.local
+title: Chief Technology Officer
+employeeNumber: 1002
+telephoneNumber: +62 21 555 0102
+departmentNumber: Executive
+userPassword: ctoPass123
+
+dn: uid=carol.wong,ou=People,dc=adam,dc=local
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+uid: carol.wong
+cn: Carol Wong
+sn: Wong
+givenName: Carol
+displayName: Carol Wong
+mail: carol.wong@adam.local
+title: Chief Financial Officer
+employeeNumber: 1003
+telephoneNumber: +62 21 555 0103
+departmentNumber: Executive
+userPassword: cfoPass123
+
+dn: uid=david.kusuma,ou=People,dc=adam,dc=local
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+uid: david.kusuma
+cn: David Kusuma
+sn: Kusuma
+givenName: David
+displayName: David Kusuma
+mail: david.kusuma@adam.local
+title: HR Manager
+employeeNumber: 1004
+telephoneNumber: +62 21 555 0104
+departmentNumber: HR
+userPassword: hrmgrPass123
+
+dn: uid=elaine.sari,ou=People,dc=adam,dc=local
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+uid: elaine.sari
+cn: Elaine Sari
+sn: Sari
+givenName: Elaine
+displayName: Elaine Sari
+mail: elaine.sari@adam.local
+title: HR Specialist
+employeeNumber: 1005
+telephoneNumber: +62 21 555 0105
+departmentNumber: HR
+userPassword: hrPass123
+
+dn: uid=farhan.arya,ou=People,dc=adam,dc=local
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+uid: farhan.arya
+cn: Farhan Arya
+sn: Arya
+givenName: Farhan
+displayName: Farhan Arya
+mail: farhan.arya@adam.local
+title: Engineering Manager
+employeeNumber: 1006
+telephoneNumber: +62 21 555 0106
+departmentNumber: Engineering
+userPassword: engmgrPass123
+
+dn: uid=gina.prasetyo,ou=People,dc=adam,dc=local
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+uid: gina.prasetyo
+cn: Gina Prasetyo
+sn: Prasetyo
+givenName: Gina
+displayName: Gina Prasetyo
+mail: gina.prasetyo@adam.local
+title: Senior Software Engineer
+employeeNumber: 1007
+telephoneNumber: +62 21 555 0107
+departmentNumber: Engineering
+userPassword: engPass123
+
+dn: uid=hendri.nugroho,ou=People,dc=adam,dc=local
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+uid: hendri.nugroho
+cn: Hendri Nugroho
+sn: Nugroho
+givenName: Hendri
+displayName: Hendri Nugroho
+mail: hendri.nugroho@adam.local
+title: Software Engineer
+employeeNumber: 1008
+telephoneNumber: +62 21 555 0108
+departmentNumber: Engineering
+userPassword: devPass123
+
+dn: uid=isabela.putri,ou=People,dc=adam,dc=local
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+uid: isabela.putri
+cn: Isabela Putri
+sn: Putri
+givenName: Isabela
+displayName: Isabela Putri
+mail: isabela.putri@adam.local
+title: Sales Manager
+employeeNumber: 1009
+telephoneNumber: +62 21 555 0109
+departmentNumber: Sales
+userPassword: salesmgrPass123
+
+dn: uid=joko.santoso,ou=People,dc=adam,dc=local
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+uid: joko.santoso
+cn: Joko Santoso
+sn: Santoso
+givenName: Joko
+displayName: Joko Santoso
+mail: joko.santoso@adam.local
+title: Sales Representative
+employeeNumber: 1010
+telephoneNumber: +62 21 555 0110
+departmentNumber: Sales
+userPassword: salesPass123
+
+# Groups (groupOfNames) by department
+
+dn: cn=Executive,ou=Groups,dc=adam,dc=local
+objectClass: top
+objectClass: groupOfNames
+cn: Executive
+member: uid=alice.smith,ou=People,dc=adam,dc=local
+member: uid=bob.johnson,ou=People,dc=adam,dc=local
+member: uid=carol.wong,ou=People,dc=adam,dc=local
+
+dn: cn=Engineering,ou=Groups,dc=adam,dc=local
+objectClass: top
+objectClass: groupOfNames
+cn: Engineering
+member: uid=farhan.arya,ou=People,dc=adam,dc=local
+member: uid=gina.prasetyo,ou=People,dc=adam,dc=local
+member: uid=hendri.nugroho,ou=People,dc=adam,dc=local
+
+dn: cn=HR,ou=Groups,dc=adam,dc=local
+objectClass: top
+objectClass: groupOfNames
+cn: HR
+member: uid=david.kusuma,ou=People,dc=adam,dc=local
+member: uid=elaine.sari,ou=People,dc=adam,dc=local
+
+dn: cn=Sales,ou=Groups,dc=adam,dc=local
+objectClass: top
+objectClass: groupOfNames
+cn: Sales
+member: uid=isabela.putri,ou=People,dc=adam,dc=local
+member: uid=joko.santoso,ou=People,dc=adam,dc=local
+
+# End of LDIF
