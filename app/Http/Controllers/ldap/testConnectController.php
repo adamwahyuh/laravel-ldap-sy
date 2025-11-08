@@ -17,7 +17,7 @@ class testConnectController extends Controller
         $userCn = env('LDAP_USER_CN_1');
         $userPass = env('LDAP_USER_Password_1');
 
-        $username = "cn={$userCn},cn=users,dc=adam,dc=local";
+        $username = "uid={$userCn},ou=People,dc=adam,dc=local";
         $password = $userPass;
 
         try {
