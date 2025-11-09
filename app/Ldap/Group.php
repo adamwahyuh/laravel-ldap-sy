@@ -4,7 +4,6 @@ namespace App\Ldap;
 
 use App\Ldap\Person;
 use LdapRecord\Models\Model;
-use LdapRecord\Models\Relations\HasMany;
 
 class Group extends Model
 {
@@ -15,8 +14,7 @@ class Group extends Model
 
     protected $baseDn = 'ou=Groups,dc=adam,dc=local';
 
-    //aksesor
-
+    // Accessors
     public function getNameAttribute()
     {
         return $this->cn[0] ?? null;
@@ -27,10 +25,35 @@ class Group extends Model
         return $this->member ?? [];
     }
 
-    // Relasi
-    public function members(): HasMany
+    // Add DN to group
+    public function addMember($dn)
     {
-        return $this->hasMany(Person::class, 'dn', 'member');
+        $members = $this->member ?? [];
+
+        if (!is_array($members)) {
+            $members = [$members];
+        }
+
+        if (!in_array($dn, $members)) {
+            $members[] = $dn;
+            $this->member = $members;
+            $this->save();
+        }
     }
 
+    // Remove DN from group
+    public function removeMember($dn)
+    {
+        $members = $this->member ?? [];
+
+        if (!is_array($members)) {
+            $members = [$members];
+        }
+
+        if (($key = array_search($dn, $members)) !== false) {
+            unset($members[$key]);
+            $this->member = array_values($members);
+            $this->save();
+        }
+    }
 }

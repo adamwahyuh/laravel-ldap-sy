@@ -4,7 +4,6 @@ namespace App\Ldap;
 
 use App\Ldap\Group;
 use LdapRecord\Models\Model;
-use LdapRecord\Models\Relations\HasMany;
 
 class Person extends Model
 {
@@ -44,7 +43,7 @@ class Person extends Model
         return $this->mail[0] ?? null;
     }
 
-    public function getZitleAttribute()
+    public function getJabatanAttribute()
     {
         return $this->title[0] ?? null;
     }
@@ -66,5 +65,21 @@ class Person extends Model
         return Group::where('member', $this->getDn())->get();
     }
 
+
+    protected $rules = [
+        'objectClass' => ['required', 'array'],
+
+        'cn' => ['required', 'string'],          
+        'sn' => ['required', 'string'],          
+        'givenName' => ['required', 'string'],   
+        'uid' => ['required', 'string'],         
+        'mail' => ['required', 'email'],         
+        'userPassword' => ['required', 'string', 'min:8'], 
+
+        'title' => ['nullable', 'string'],
+        'departmentNumber' => ['nullable', 'string'],
+        'employeeNumber' => ['nullable', 'string'],
+        'telephoneNumber' => ['nullable', 'string'],
+    ];
 
 }
