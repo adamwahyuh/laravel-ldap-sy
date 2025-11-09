@@ -35,10 +35,6 @@
 
         <div style="margin-bottom: 15px;">
             <label for="uid" style="display: block; margin-bottom: 5px;">Username (uid)</label>
-            {{-- 
-              UID tidak boleh diubah karena ini adalah 'key' dari user.
-              Kita gunakan 'readonly' agar nilainya tetap terkirim tapi tidak bisa diedit.
-            --}}
             <input type="text" id="uid" name="uid" value="{{ $person->uiid }}" readonly style="width: 100%; padding: 8px; box-sizing: border-box; background-color: #eee;">
         </div>
 
@@ -58,12 +54,6 @@
                 <option value="">-- Pilih Departemen --</option>
                 
                 @foreach ($groups as $group)
-                    {{-- 
-                      Ini bagian penting:
-                      Kita cek apakah department user ($person->department) 
-                      SAMA DENGAN nama grup ($group->name).
-                      Jika ya, kita tambahkan atribut 'selected'.
-                    --}}
                     <option value="{{ $group->name }}" @if($person->department == $group->name) selected @endif>
                         {{ $group->name }}
                     </option>
